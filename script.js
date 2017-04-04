@@ -9,16 +9,20 @@ $(function() {
         weather = data.current_observation.weather;
         tempF = data.current_observation.temp_f + "&deg;F";
         tempC = data.current_observation.temp_c + "&deg;C";
+        var iconUrl = "https://icons.wxug.com/i/c/k/" + data.current_observation.icon + ".gif";
+        $("#icon").attr("src", iconUrl);
         $("#loc").text(location);
-        $("#temp").html('<h1 id="temp">Temperature: ' + weather + ' & ' + tempF + '</h1>');
+        $("#temp").html('Temperature: ' + weather + ' & ' + tempF);
     });
 
     $("#tempBtn").click(function() {
         if (tempIsF) {
-            $("#temp").html('<h1 id="temp">Temperature: ' + weather + ' & ' + tempC + '</h1>');
+            $("#temp").html('Temperature: ' + weather + ' & ' + tempC);
+            $("#tempBtn").text('Fahrenheit');
             tempIsF = false;
         } else {
-            $("#temp").html('<h1 id="temp">Temperature: ' + weather + ' & ' + tempF + '</h1>');
+            $("#temp").html('Temperature: ' + weather + ' & ' + tempF);
+            $("#tempBtn").text('Celcius');
             tempIsF = true;
         }
     });
